@@ -1,1 +1,2 @@
-Entrega Trabajo Especial Integrador
+Comando de ejecucion:
+-go run .
