@@ -6,7 +6,7 @@ test:
 	@set -euo pipefail; \
 	cleanup() { \
 		echo "==> Limpiando contenedores y volúmenes..."; \
-		docker compose down -v --remove-orphans >/dev/null 2>&1 || true; \
+		docker compose down -v >/dev/null 2>&1 || true; \
 	}; \
 	trap cleanup EXIT; \
 	echo "==> Generando código con sqlc..."; \
@@ -14,7 +14,7 @@ test:
 	echo "==> Compilando proyecto..."; \
 	go build ./...; \
 	echo "==> Eliminando entorno de pruebas anterior..."; \
-	docker compose down -v --remove-orphans; \
+	docker compose down -v; \
 	echo "==> Levantando PostgreSQL..."; \
 	docker compose up -d; \
 	echo "==> Esperando a que PostgreSQL esté disponible..."; \
